@@ -21,6 +21,9 @@ data "aws_subnet" "us_east_1c_public" {
   tags = {
     "type" = "public_subnet"
   }
+  depends_on = [
+    aws_subnet.public
+  ]
 }
 
 resource "aws_subnet" "private" {
@@ -39,6 +42,9 @@ data "aws_subnet" "us_east_1c_private" {
   tags = {
     "type" = "private_subnet"
   }
+  depends_on = [
+    aws_subnet.private
+  ]
 }
 
 data "aws_subnet" "us_east_1d_private" {
@@ -46,6 +52,9 @@ data "aws_subnet" "us_east_1d_private" {
   tags = {
     "type" = "private_subnet"
   }
+  depends_on = [
+    aws_subnet.private
+  ]
 }
 
 resource "aws_internet_gateway" "gw" {
